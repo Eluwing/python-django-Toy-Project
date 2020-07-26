@@ -1,0 +1,25 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+  <h1>Name : {{ author }}</h1>
+
+  <p><strong>Birth Date : </strong> {{ author.date_of_birth }}</p>
+  <p><strong>Death Date : </strong> {{ author.date_of_death }}</p>
+
+  <div style="margin-left:20px;margin-top:20px">
+    <h4>Author BookList</h4>
+
+    {% for copy in author.book_set.all  %}
+      <hr>
+      <p><strong>Title:</strong> {{copy.title }}</p>
+      <p><strong>Summary:</strong> {{copy.summary | linebreaks}}</p>
+      <p><strong>ISBN:</strong> {{copy.isbn}}</p>
+      <p><strong>Genre:</strong> {{copy.genre.all}}</p>
+      <p><strong>Language:</strong> {{copy.language}}</p>
+      <p class="text-muted"><strong>Id:</strong> {{copy.id}}</p>
+    {% endfor %}
+  </div>
+
+
+{% endblock %}
