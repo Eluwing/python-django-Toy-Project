@@ -16,8 +16,11 @@
       <li><strong>Authors:</strong> {{ num_authors }}</li>
       <li><strong>books name('of'):</strong> {{ num_books_of }}</li>
       <li><strong>books name('of') list :</strong> {{ books_title_of }}</li>
-      <li><strong>books genre name('of') list :</strong> {{ books_genre_of }}</li>
+      <li><strong>books genre name('of') list :</strong> {{ books_genre_of.get }}</li>
     </ul>
+    <p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
   {% endblock %}
+
+
 </body>
 </html>
