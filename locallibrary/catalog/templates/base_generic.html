@@ -31,9 +31,12 @@
         {% if perms.catalog.can_mark_returned %}
           <!-- We can mark a BookInstance as returned. -->
           <!-- Perhaps add code to link to a "book return" view here. -->
-          <li><a href="{% url 'all-borrowed' %}">All borrowed</a></li>
-        {% endif %}
 
+          <!-- <li><a href="{% url 'all-borrowed' %}">All borrowed</a></li> -->
+          <li><a href="{% url 'all-borrowed' %}">Borrowed Management</a></li>
+          <li><a href="{% url 'manage-book' %}">Book Management</a></li>
+          <li><a href="{% url 'manage-author' %}">Author Management</a></li>
+        {% endif %}
 
       {% endblock %}
       </div>

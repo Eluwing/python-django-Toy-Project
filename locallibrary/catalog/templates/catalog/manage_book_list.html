@@ -1,0 +1,41 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+{% if perms.catalog.can_mark_returned == False %}
+
+  <p>You have not permission.</p>
+
+{% elif perms.catalog.can_mark_returned %}
+  <h1>Book List</h1>
+  {% if book_list %}
+  <ul>
+    {% for book in book_list %}
+      {% if perms.catalog.can_mark_returned %}
+      <li>
+        <a href="{{ book.get_absolute_url }}" >{{ book.title }}</a> ({{book.author}}) &nbsp;&nbsp;
+        <a href="{% url 'manage-book-update' book.id %}">
+          <font color = "red">
+            Renew
+          </font>
+        </a> &nbsp;&nbsp;
+        <a href="{% url 'manage-book-delete' book.id %}">
+          <font color = "red">
+            Delete
+          </font>
+        </a>
+      </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no books in the library.</p>
+  {% endif %}
+
+  <a href="{% url 'manage-book-create' %}">
+    <font color = "red">
+      Insert
+    </font>
+  </a>
+
+{% endif %}
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base_generic.html" %}
+
+
+{% block content %}
+{% if perms.catalog.can_mark_returned == False %}
+  <p>You have not permission.</p>
+
+{% elif perms.catalog.can_mark_returned %}
+  <h1>author List</h1>
+  {% if author_list %}
+  <ul>
+    {% for author in author_list %}
+      <li>
+        <a href="{{ author.get_absolute_url }}">{{ author }} </a>&nbsp;&nbsp;
+        <a href="{% url 'manage-author-update' author.id %}">
+          <font color = "red">
+            Renew
+          </font>
+        </a> &nbsp;&nbsp;
+        <a href="{% url 'manage-author-delete' author.id %}">
+          <font color = "red">
+            Delete
+          </font>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are author in the library.</p>
+  {% endif %}
+  <a href="{% url 'manage-author-create' %}">
+    <font color = "red">
+      Insert
+    </font>
+  </a>
+{% endif %}
+{% endblock %}
