@@ -7,3 +7,6 @@ https://docs.djangoproject.com/en/3.0/intro/
 
 2. locallibrary App :
 https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django
+
+my blog here!
+https://nitro04.blogspot.com/
