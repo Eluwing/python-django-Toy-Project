@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>User List</h1>
+
+  {% if obj_user %}
+  <ul>
+    {% for user in obj_user %}
+      <li>
+        <a href="{% url 'user_detail' user.username %}">{{ user.username }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no user in the user list.</p>
+  {% endif %}
+{% endblock %}

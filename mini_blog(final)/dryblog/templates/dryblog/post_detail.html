@@ -1,0 +1,30 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Title: {{ post.p_title }}</h1>
+
+  <p><strong>Posted Name:</strong> <a href="{% url 'user_detail' post.p_name %}">{{ post.p_name }}</a></p> <!-- author detail link not yet defined -->
+  <p><strong>Posted Date:</strong> {{ post.p_date }}</p>
+  <p><strong>Description:</strong> {{ post.p_description }}</p>
+  <!-- <p><strong>Genre:</strong> {% for genre in book.genre.all %} {{ genre }}{% if not forloop.last %}, {% endif %}{% endfor %}</p> -->
+
+  <div style="margin-left:20px;margin-top:20px">
+    <h4>Comments</h4>
+    <a href="{% url 'comment_create' post.id %}">Create</a>
+
+    {% for comment in post.comment_set.all %}
+      <hr>
+      <!-- <p class="{% if copy.status == 'a' %}text-success{% elif copy.status == 'm' %}text-danger{% else %}text-warning{% endif %}">{{ copy.get_status_display }}</p>
+      {% if copy.status != 'a' %}
+        <p><strong>Due to be returned:</strong> {{copy.due_back}}</p>
+      {% endif %} -->
+      <p><strong>Commented Name:</strong> {{comment.c_name}}
+        <a href="{% url 'comment_update' post.id comment.id %}">Update</a>
+        <a href="{% url 'comment_delete' post.id comment.id %}">Delete</a>
+      </p>
+      <p><strong>Commented Date:</strong> {{comment.c_date}}</p>
+      <p><strong>Description:</strong> {{comment.c_description}}</p>
+      <!-- <p class="text-muted"><strong>Id:</strong> {{copy.id}}</p> -->
+    {% endfor %}
+  </div>
+{% endblock %}

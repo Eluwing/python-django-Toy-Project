@@ -1,0 +1,29 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+  <h1>title: {{ post.p_title }}</h1>
+  <p>name: {{ post.p_name }}</p>
+  <p>date: {{ post.p_date}}</p>
+  <p>description : {{ post.p_description}}</p>
+  <hr color="green">
+
+  <div style="margin-left:20px;margin-top:20px">
+    <form method="POST" action="">
+      {% csrf_token %}
+        {{ form.as_table }}
+        <!-- <textarea id="js-pl-textarea" name="comment"></textarea> -->
+      <input type="submit" id="js-pl-submit" value="submit"></input>
+
+    </form>
+  </div>
+{% endblock %}
+<!-- <form action="{% url 'comment_update' post.pk %}" method="post">
+      {% csrf_token %}
+      댓글 : <input type="text" name="content"/>
+          <input type="submit" value="Submit"/>
+</form>
+
+
+
+ -->

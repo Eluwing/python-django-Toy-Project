@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>title: {{ post.p_title }}</h1>
+    <p>name: {{ post.p_name }}</p>
+    <p>date: {{ post.p_date}}</p>
+    <p>description : {{ post.p_description}}</p>
+    <hr color="green">
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_table }}
+    <input type="submit" value="Submit">
+    </form>
+{% endblock %}

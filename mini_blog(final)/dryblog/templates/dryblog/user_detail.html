@@ -1,0 +1,10 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>User NickName : {{ user.username }}</h1>
+
+<p><strong> Name: </strong>{{ user.first_name }} {{user.last_name }}</a></p> <!-- author detail link not yet defined -->
+<p><strong> E-Mail: </strong> {{ user.email }}</p>
+
+{% endblock %}

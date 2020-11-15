@@ -1,0 +1,31 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Post List</h1>
+  {% if post_list %}
+  <ul>
+    {% for post in post_list %}
+      <li>
+        <a href="{{ post.get_absolute_url }}">{{ post.p_title }}</a> ({{ post.p_name }})
+
+          {% if blog_admin_flag == True %}
+            <a href="{% url 'renew-post' post.id %}">Renew</a>
+            <a href="{% url 'post_delete' post.id %}">Delete</a>
+
+          {% elif true_title_list|length != 0 %}
+
+              {% for list in true_title_list %}
+                {% if post.p_title == list %}
+                  <a href="{% url 'renew-post' post.id %}">Renew</a>
+                  <a href="{% url 'post_delete' post.id %}">Delete</a>
+                {% endif %}
+              {% endfor %}
+
+          {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no books in the library.</p>
+  {% endif %}
+{% endblock %}
